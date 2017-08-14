@@ -1,0 +1,8 @@
+<launch>
+
+  <node pkg="slam_karto_g2o" type="slam_karto_g2o" name="slam_karto_g2o" output="screen">
+    <remap from="scan" to="base_scan" />
+    <rosparam command="load" file="$(find slam_karto_g2o)/config/mapping_karto_g2o.yaml" />
+  </node>
+
+</launch>
