@@ -195,41 +195,6 @@ void G2OSolver::AddConstraint(karto::Edge<karto::LocalizedRangeScan>* pEdge)
 
 }
 
-void G2OSolver::AddHeadingConstraint(karto::LocalizedRangeScan* scanPose, const double& headingEst, const double& headingEstVar)
-{
-
-  karto::Pose2 pose = scanPose->GetCorrectedPose();
-    
-  g2o::EdgeSE2Prior* headingPrior = new g2o::EdgeSE2Prior;
-
-  headingPrior->vertices()[0] = optimizer_.vertex(latestNodeID_);
-
-  g2o::SE2 measurement(pose.GetX(), pose.GetY() , headingEst);
-
-  headingPrior->setMeasurement(measurement);
-
-  Eigen::Matrix<double,3,3> info;
-
-  info(0,0) = 1e-12; // prior on x position has high uncertainty / low information
-
-  info(0,1) = info(1,0) = 0.0;
-
-  info(0,2) = info(2,0) = 0.0;
-
-  info(1,1) = 1e-12; // prior on y position has high uncertainty / low information
-
-  info(1,2) = info(2,1) = 0.0;
-
-  info(2,2) = 1 / headingEstVar;
-
-  headingPrior->setInformation(info);
-
-  ROS_DEBUG("[g2o] Adding prior edge to %d.", latestNodeID_);
-
-  optimizer_.addEdge(headingPrior);
-  
-}
-
 void G2OSolver::getGraph(std::vector<Eigen::Vector2d> &nodes, std::vector<std::pair<Eigen::Vector2d, Eigen::Vector2d> > &edges)
 {
   using namespace g2o;

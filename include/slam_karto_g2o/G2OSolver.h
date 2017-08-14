@@ -65,15 +65,6 @@ class G2OSolver : public karto::ScanSolver
     virtual void AddConstraint(karto::Edge<karto::LocalizedRangeScan>* pEdge);
 
     /**
-     * @brief Add a heading constraint to a graph node.
-     * @details When heading estimates are available add a heading constraint to the node, this can improve SLAM accuracy.
-     * 
-     * @param headingEst mean of the heading estimate
-     * @param headingEstVar variance of the heading estimate
-     */
-    virtual void AddHeadingConstraint(karto::LocalizedRangeScan* scanPose, const double& headingEst, const double& headingEstVar);
-
-    /**
      * @brief Get the pose-graph 
      * @details Get the underlying graph from g2o, return the graph of constraints
      * 
