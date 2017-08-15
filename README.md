@@ -12,7 +12,7 @@ The optimization routine used is Levenberg-Marquadt provided by g2o, you can eas
 
 # How-To Use
 
-Use the given launch files. The build_map_w_params launch files uses a given param file, which you can edit to change the behavior of open_karto. Make sure to use the right scan topic. Also, the package will expect odometry to be published to the /odom topic.
+Use the given launch files. The build_map_w_params launch files uses a given param file, which you can edit to change the behavior of open_karto. Make sure to use the right scan topic. Also, the package will expect an odometry tf to be published to between odom frame and base_link (or base_footprint).
 
 # Dependencies
 
