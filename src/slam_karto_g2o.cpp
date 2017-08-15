@@ -110,6 +110,7 @@ class SlamKarto
     tf::Transform map_to_odom_;
     unsigned marker_count_;
     bool inverted_laser_;
+    bool use_robust_kernel_;
 };
 
 SlamKarto::SlamKarto() :
@@ -119,8 +120,15 @@ SlamKarto::SlamKarto() :
         marker_count_(0)
 {
   map_to_odom_.setIdentity();
+  
   // Retrieve parameters
   ros::NodeHandle private_nh_("~");
+
+  if(!private_nh_.getParam("use_robust_kernel", use_robust_kernel_))
+  {
+    use_robust_kernel_ = false;
+  }
+
   if(!private_nh_.getParam("odom_frame", odom_frame_))
     odom_frame_ = "odom";
   if(!private_nh_.getParam("map_frame", map_frame_))
@@ -287,6 +295,9 @@ SlamKarto::SlamKarto() :
 
   // Set solver to be used in loop closure
   solver_ = new G2OSolver();
+
+  solver_->useRobustKernel(use_robust_kernel_);
+  
   mapper_->SetScanSolver(solver_);
 }
 

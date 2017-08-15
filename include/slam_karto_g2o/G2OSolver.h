@@ -72,6 +72,17 @@ class G2OSolver : public karto::ScanSolver
      */
     void getGraph(std::vector<Eigen::Vector2d> &nodes, std::vector<std::pair<Eigen::Vector2d, Eigen::Vector2d> > &edges);
 
+    /**
+     * @brief Use robust kernel in back-end
+     * @details Uses Dynamic Covariance scaling kernel in back-end
+     * 
+     * @param flag variable, if true robust kernel will be used
+     */
+    void useRobustKernel(bool flag)
+    {
+        useRobustKernel_ = flag;
+    }
+
   private:
     
     karto::ScanSolver::IdPoseVector corrections_;
@@ -79,6 +90,8 @@ class G2OSolver : public karto::ScanSolver
     g2o::SparseOptimizer optimizer_;
 
     int latestNodeID_; // ID of the latest added node, this is used internally in AddHeadingConstraint
+
+    bool useRobustKernel_;
 
 };
 

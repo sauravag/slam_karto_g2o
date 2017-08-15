@@ -11,6 +11,7 @@
 #include "G2OSolver.h"
 #include "g2o/core/block_solver.h"
 #include "g2o/core/factory.h"
+#include "g2o/core/robust_kernel_impl.h"
 #include "g2o/core/optimization_algorithm_factory.h"
 #include "g2o/core/optimization_algorithm_levenberg.h"
 #include "g2o/types/slam2d/types_slam2d.h"
@@ -35,6 +36,8 @@ G2OSolver::G2OSolver()
   optimizer_.setAlgorithm(new g2o::OptimizationAlgorithmLevenberg(blockSolver));
 
   latestNodeID_ = 0;
+
+  useRobustKernel_ = true;
 }
 
 G2OSolver::~G2OSolver()
@@ -187,6 +190,15 @@ void G2OSolver::AddConstraint(karto::Edge<karto::LocalizedRangeScan>* pEdge)
   info(2,2) = precisionMatrix(2,2);
   
   odometry->setInformation(info);
+
+  if(useRobustKernel_)
+  {
+  
+    g2o::RobustKernelDCS* rk = new g2o::RobustKernelDCS;
+
+    odometry->setRobustKernel(rk);
+
+  }
   
   // Add the constraint to the optimizer
   ROS_DEBUG("[g2o] Adding Edge from node %d to node %d.", sourceID, targetID);
