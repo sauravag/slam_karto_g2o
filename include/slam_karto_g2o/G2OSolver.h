@@ -1,11 +1,9 @@
 /*********************************************************************
 *
-*  Copyright (c) 2017, Stocked Robotics Inc. 
+*  Copyright (c) 2017, Saurav Agarwal 
 *  All rights reserved.
 *
 *********************************************************************/
-
-/* Authors: Saurav Agarwal */
 
 
 #ifndef KARTO_G2OSolver_H
