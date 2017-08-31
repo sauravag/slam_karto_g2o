@@ -18,13 +18,10 @@
 
 /*********************************************************************
 *
-*  Copyright (c) 2017, Stocked Robotics Inc. 
+*  Copyright (c) 2017, Saurav Agarwal 
 *  All rights reserved.
 *
 *********************************************************************/
-
-/* Authors: Saurav Agarwal */
-
 
 #include "ros/ros.h"
 #include "ros/console.h"
