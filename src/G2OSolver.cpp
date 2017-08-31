@@ -1,12 +1,9 @@
 /*********************************************************************
 *
-*  Copyright (c) 2017, Stocked Robotics Inc. 
+*  Copyright (c) 2017, Saurav Agarwal
 *  All rights reserved.
 *
 *********************************************************************/
-
-/* Authors: Saurav Agarwal */
-
 
 #include "G2OSolver.h"
 #include "g2o/core/block_solver.h"
