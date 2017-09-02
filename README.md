@@ -16,10 +16,13 @@ Use the given launch files. The build_map_w_params launch files uses a given par
 
 # Dependencies
 
-* g2o: Downloand and install from https://github.com/RainerKuemmerle/g2o.
 * SuiteSparse: In ubuntu you can install as $ sudo apt-get install libsuitesparse-dev (www.suitesparse.com)
-* Eigen: sudo apt-get install libeigen3-dev (most likely it is already installed if you have ROS)
-* sudo apt-get install ros-kinetic-slam-karto or clone open_karto to your catkin_ws/src folder (https://github.com/ros-perception/open_karto)
+
+* Eigen: $ sudo apt-get install libeigen3-dev (most likely it is already installed if you have ROS)
+
+* g2o: Downloand and install from https://github.com/RainerKuemmerle/g2o.
+
+* Clone open_karto to your catkin_ws/src folder (https://github.com/ros-perception/open_karto)
 
 # Support
 
