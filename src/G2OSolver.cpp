@@ -30,7 +30,7 @@ G2OSolver::G2OSolver()
   
   auto blockSolver = g2o::make_unique<SlamBlockSolver>(std::move(linearSolver));
   
-  optimizer_.setAlgorithm(new g2o::OptimizationAlgorithmLevenberg(blockSolver));
+  optimizer_.setAlgorithm(new g2o::OptimizationAlgorithmLevenberg(std::move(blockSolver)));
 
   latestNodeID_ = 0;
 
