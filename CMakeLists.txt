@@ -1,7 +1,7 @@
 cmake_minimum_required(VERSION 2.8.3)
 project(slam_karto_g2o)
 
-add_compile_options(-std=c++11)
+add_compile_options(-std=c++14)
 
 find_package(catkin REQUIRED COMPONENTS
     cmake_modules
