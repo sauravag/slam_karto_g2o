@@ -168,7 +168,7 @@ SlamKarto::SlamKarto() :
   dataset_ = new karto::Dataset();
 
   // Setting General Parameters from the Parameter Server
-  bool use_scan_matching;
+  bool use_scan_matching = true;
   if(private_nh_.getParam("use_scan_matching", use_scan_matching))
     mapper_->setParamUseScanMatching(use_scan_matching);
   
